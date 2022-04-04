@@ -1,3 +1,5 @@
+import NetInfo from '@react-native-community/netinfo'
+
 const emailValidate = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
 export const checkEmail = email => {

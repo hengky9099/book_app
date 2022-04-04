@@ -1,87 +1,81 @@
-import { Text, StyleSheet, Image, ScrollView, TextInput, TouchableOpacity, Alert } from 'react-native'
-import React, { useState } from 'react'
-import { moderateScale } from 'react-native-size-matters'
-import axios from 'axios'
-import {BASE_URL} from '../../helpers/apiAccessToken'
-import {NoInternetConnection} from '../../component/NoInternetConnection'
-import NetInfo from '@react-native-community/netinfo'
-import { useDispatch, useSelector } from 'react-redux'
-import {SetUsername, SetPassword, SetEmail} from './redux/action'
-import { checkEmail, isValidPassword } from '../../helpers/validation'
-
+import {
+  Text,
+  StyleSheet,
+  Image,
+  ScrollView,
+  TextInput,
+  TouchableOpacity,
+  Alert,
+} from 'react-native';
+import React from 'react';
+import {moderateScale} from 'react-native-size-matters';
+import axios from 'axios';
+import {BASE_URL} from '../../helpers/apiAccessToken';
+import NoInternetConnection from '../../component/NoInternetConnection';
+import {useDispatch, useSelector} from 'react-redux';
+import {SetUsername, SetPassword, SetEmail} from './redux/action';
+import {checkEmail, isValidPassword} from '../../helpers/validation';
 
 const Index = ({navigation}) => {
-  // const [connection, setConnection] = useState(true)
-  const dispatch = useDispatch()
-  const {email, password, name } = useSelector(state => state.register)
+  const dispatch = useDispatch();
+  const {email, password, name} = useSelector(state => state.register);
+  const {connection} = useSelector(state => state.global);
 
   const data = {
     email: email,
     password: password,
     name: name,
-  }
+  };
 
   const register = async () => {
     try {
-      if(checkEmail(email) && isValidPassword(password)){
-        const res = await axios.post(`http://code.aldipee.com/api/v1/auth/register`, data)
+      if (checkEmail(email) && isValidPassword(password)) {
+        const res = await axios.post(
+          `http://code.aldipee.com/api/v1/auth/register`,
+          data,
+        );
         console.log(res);
-            Alert.alert('Alert', 'Registration Success', [
-              {
-                text: 'OK',
-                onPress: () => navigation.navigate('Login'),
-              },
-            ]);
-      } else if(!checkEmail(email) && isValidPassword(password)) {
+        Alert.alert('Alert', 'Registration Success', [
+          {
+            text: 'OK',
+            onPress: () => navigation.navigate('Login'),
+          },
+        ]);
+      } else if (!checkEmail(email) && isValidPassword(password)) {
         Alert.alert('Alert', `Invalid Email`);
-      } else if(checkEmail(email) && !isValidPassword(password)) {
+      } else if (checkEmail(email) && !isValidPassword(password)) {
         Alert.alert('Alert', `Invalid Password`);
       } else {
-        Alert.alert(
-          'Alert',
-          'Invalid Email and Password',
-        );
+        Alert.alert('Alert', 'Invalid Email and Password');
       }
     } catch (error) {
-      Alert.alert(
-        'Alert',
-        error,
-      );
+      Alert.alert('Alert', error);
     }
-  }
+  };
 
-  // const checkInternet = () => {
-  //   NetInfo.fetch().then(state => {
-  //     console.log('Connection type', state.type);
-  //     console.log('Is connected?', state.isConnected);
-
-  //     setConnection(state.isConnected);
-  //   })
-  // }
-
-  // if(connection){
+  if (connection) {
     return (
       <ScrollView style={styles.container}>
         <Image
-        style={styles.logo}
-        source={require('../../assets/images/logo.png')}
+          style={styles.logo}
+          source={require('../../assets/images/logo.png')}
         />
         <TextInput
           style={styles.value}
-          onChangeText={(value) => dispatch(SetUsername(value))}
+          onChangeText={value => dispatch(SetUsername(value))}
           value={name}
           placeholder="Full Name"
         />
         <TextInput
           style={styles.value}
-          onChangeText={(value) => dispatch(SetEmail(value))}
+          onChangeText={value => dispatch(SetEmail(value))}
           value={email}
           placeholder="Email"
           textContentType="emailAddress"
         />
         <TextInput
           style={styles.value}
-          onChangeText={(value) => dispatch(SetPassword(value))}
+          onChangeText={value => dispatch(SetPassword(value))}
           value={password}
           placeholder="Password"
           secureTextEntry={true}
@@ -91,29 +85,28 @@ const Index = ({navigation}) => {
         </TouchableOpacity>
 
         <Text style={styles.text}>Don't have an account?</Text>
-      
+
         <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-              <Text style={styles.textlogin}>Login</Text>
-          </TouchableOpacity>
-
+          <Text style={styles.textlogin}>Login</Text>
+        </TouchableOpacity>
       </ScrollView>
-    )
-  // } else {
-  //   NoInternetConnection(connection)
-  // }
-}
+    );
+  } else {
+    return <NoInternetConnection />;
+  }
+};
 
-export default Index
+export default Index;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'white'
+    backgroundColor: 'white',
   },
   logo: {
     width: moderateScale(200),
     height: moderateScale(200),
     marginTop: moderateScale(100),
-    marginLeft: moderateScale(70)
+    marginLeft: moderateScale(70),
   },
   value: {
     width: moderateScale(280),
@@ -122,7 +115,7 @@ const styles = StyleSheet.create({
     borderWidth: moderateScale(1),
     borderRadius: moderateScale(10),
     borderColor: 'gray',
-    marginLeft: moderateScale(32)
+    marginLeft: moderateScale(32),
   },
   button: {
     backgroundColor: '#4D96FF',
@@ -131,24 +124,23 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: moderateScale(10),
-    marginLeft: moderateScale(40)
-
+    marginLeft: moderateScale(40),
   },
   buttonText: {
-    color: 'white'
-  }, 
+    color: 'white',
+  },
   text: {
     color: 'gray',
     fontWeight: 'bold',
     fontSize: moderateScale(14),
     marginLeft: moderateScale(100),
-    marginTop: moderateScale(10)
+    marginTop: moderateScale(10),
   },
   textlogin: {
-    fontWeight:'bold',
+    fontWeight: 'bold',
     color: 'black',
     fontSize: moderateScale(16),
     left: moderateScale(144),
-    marginTop: moderateScale(10)
+    marginTop: moderateScale(10),
   },
-})
+});

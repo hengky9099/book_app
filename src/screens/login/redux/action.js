@@ -11,3 +11,10 @@ export const SetLoginPassword = data => {
         payload: data,
     };
 };
+
+export const SetToken = data => {
+  return {
+      type: 'SET_TOKEN',
+      payload: data,
+  };
+};
