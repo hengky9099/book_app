@@ -1,4 +1,6 @@
-import NetInfo from '@react-native-community/netinfo'
+import NetInfo from '@react-native-community/netinfo';
+import 'intl';
+import 'intl/locale-data/jsonp/en';
 
 const emailValidate = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 

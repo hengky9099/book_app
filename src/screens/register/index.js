@@ -30,10 +30,7 @@ const Index = ({navigation}) => {
   const register = async () => {
     try {
       if (checkEmail(email) && isValidPassword(password)) {
-        const res = await axios.post(
-          `http://code.aldipee.com/api/v1/auth/register`,
-          data,
-        );
+        const res = await axios.post(`${BASE_URL}/register`, data);
         console.log(res);
         Alert.alert('Alert', 'Registration Success', [
           {

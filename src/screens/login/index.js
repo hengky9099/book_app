@@ -13,6 +13,8 @@ import {SetLoginEmail, SetLoginPassword, SetToken} from './redux/action';
 import NoInternetConnection from '../../component/NoInternetConnection';
 import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
+import {BASE_URL} from '../../helpers/apiAccessToken';
+import {SetLoading} from '../../store/actionGlobal';
 
 const Index = ({navigation}) => {
   const {email, password, token} = useSelector(state => state.login);
@@ -26,30 +28,17 @@ const Index = ({navigation}) => {
 
   const login = async () => {
     try {
-      const res = await axios.post(
-        `http://code.aldipee.com/api/v1/auth/login`,
-        data,
-        {
-          validateStatus: status => {
-            if (status < 201) {
-              // console.log(res.tokens);
-              // dispatch(SetToken(res.tokens.access.token))
-              Alert.alert('Selamat', 'Login Berhasil', [
-                {
-                  text: 'OK',
-                  onPress: () => navigation.navigate('Home'),
-                },
-              ]);
-            } else if (status === 401) {
-              Alert.alert('Warning', 'Username atau Password Salah!');
-            } else {
-              Alert.alert('Warning', 'Error');
-            }
-          },
-        },
-      );
+      const res = await axios.post(`${BASE_URL}/login`, data);
+      SetLoading(true);
+      const getToken = () => {
+        dispatch(SetToken(res.data.tokens.access.token));
+      };
+      if (res.status === 201 || res.status === 200) getToken();
+      navigation.navigate('Home');
     } catch (error) {
       console.log(error);
+    } finally {
+      SetLoading(false);
     }
   };
 
@@ -90,7 +79,7 @@ const Index = ({navigation}) => {
       </View>
     );
   } else {
-    <NoInternetConnection />;
+    return <NoInternetConnection />;
   }
 };
 

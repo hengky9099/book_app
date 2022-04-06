@@ -18,16 +18,28 @@ import Icon from 'react-native-vector-icons/Feather';
 import Share from 'react-native-share';
 import notifikasi from '../../component/notification';
 import NoInternetConnection from '../../component/NoInternetConnection';
+import {BOOK_URL} from '../../helpers/apiAccessToken';
+import 'intl';
+import 'intl/locale-data/jsonp/en';
 
 const Index = ({route, navigation}) => {
   const {bookdetail} = useSelector(state => state.bookdetail);
   const {refreshing, loading, connection} = useSelector(state => state.global);
+  const {token} = useSelector(state => state.login);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     bookdetails();
   }, []);
+
+  const rupiah = number => {
+    return new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+    }).format(number);
+  };
 
   const ShareOption = async () => {
     const shareOptions = {
@@ -44,15 +56,13 @@ const Index = ({route, navigation}) => {
 
   const bookdetails = async () => {
     try {
-      const res = await axios.get(
-        `http://code.aldipee.com/api/v1/books/${route.params.datas}`,
-        {
-          headers: {
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjQ3ZDAxOTIyNTM2YzdmYzdmZjdhMTciLCJpYXQiOjE2NDkwODUxMTQsImV4cCI6MTY0OTA4NjkxNCwidHlwZSI6ImFjY2VzcyJ9.ddF2eoVK73356kn3VG7z_aal2QeMpOWC44YfV5sOveg`,
-          }, //${token}
-        },
-      );
       dispatch(SetLoading(true));
+      const res = await axios.get(`${BOOK_URL}/${route.params.datas}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }, //${token}
+      });
+
       dispatch(SetRefreshing(true));
       dispatch(SetBookDetail(res.data));
     } catch (error) {
@@ -81,6 +91,7 @@ const Index = ({route, navigation}) => {
         </View>
       );
     } else {
+      const price = rupiah(bookdetail.price);
       return (
         <ScrollView refreshControl={<RefreshControl refreshing={refreshing} />}>
           <TouchableOpacity
@@ -106,8 +117,8 @@ const Index = ({route, navigation}) => {
               source={{uri: bookdetail.cover_image}}
               resizeMode={FastImage.resizeMode.contain}
             />
-            <Text style={styles.text}>Author : {bookdetail.author}</Text>
             <Text style={styles.text}>Title : {bookdetail.title}</Text>
+            <Text style={styles.text}>Author : {bookdetail.author}</Text>
             <Text style={styles.text}>Publisher : {bookdetail.publisher}</Text>
           </View>
 
@@ -121,7 +132,7 @@ const Index = ({route, navigation}) => {
               <Text style={styles.rowtext}>{bookdetail.total_sale}</Text>
             </View>
             <TouchableOpacity style={styles.buy}>
-              <Text style={styles.buttontext}>Buy {bookdetail.price}</Text>
+              <Text style={styles.buttontext}>Buy {price}</Text>
             </TouchableOpacity>
           </View>
 
@@ -133,7 +144,7 @@ const Index = ({route, navigation}) => {
       );
     }
   } else {
-    <NoInternetConnection />;
+    return <NoInternetConnection />;
   }
 };
 export default Index;
@@ -189,6 +200,7 @@ const styles = StyleSheet.create({
     left: moderateScale(20),
     width: moderateScale(320),
     marginTop: moderateScale(10),
+    height: moderateScale(350),
   },
   backicon: {
     left: moderateScale(20),

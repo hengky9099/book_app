@@ -15,6 +15,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import FastImage from 'react-native-fast-image';
 import {SetRefreshing, SetLoading} from '../../store/actionGlobal';
 import NoInternetConnection from '../../component/NoInternetConnection';
+import {BOOK_URL} from '../../helpers/apiAccessToken';
 
 const Index = ({navigation}) => {
   const {recommendeds} = useSelector(state => state.home);
@@ -28,12 +29,14 @@ const Index = ({navigation}) => {
 
   const recommended = async () => {
     try {
-      const res = await axios.get(`http://code.aldipee.com/api/v1/books`, {
+      dispatch(SetLoading(true));
+      const res = await axios.get(`${BOOK_URL}`, {
         headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjQ3ZDAxOTIyNTM2YzdmYzdmZjdhMTciLCJpYXQiOjE2NDkwODUxMTQsImV4cCI6MTY0OTA4NjkxNCwidHlwZSI6ImFjY2VzcyJ9.ddF2eoVK73356kn3VG7z_aal2QeMpOWC44YfV5sOveg`,
+          Authorization: `Bearer ${token}`,
         }, //${token}
       });
-      dispatch(SetLoading(true));
+      console.log(res);
+
       dispatch(SetRefreshing(true));
       dispatch(SetRecommendeds(res.data.results));
     } catch (error) {
@@ -71,18 +74,21 @@ const Index = ({navigation}) => {
                     source={{uri: item.cover_image}}
                     resizeMode={FastImage.resizeMode.contain}
                   />
-                  <Text style={styles.text}>
+                  {/* <Text style={styles.text}>
                     Rating : {item.average_rating}
-                  </Text>
+                  </Text> */}
                 </View>
               </TouchableOpacity>
             )}
             horizontal={true}
           />
+          <Text style={styles.popular}>Popular Book</Text>
           <FlatList
             refreshControl={<RefreshControl refreshing={refreshing} />}
             keyExtractor={item => item.id}
+            numColumns={3}
             data={recommendeds}
+            horizontal={false}
             renderItem={({item}) => (
               <TouchableOpacity
                 onPress={() =>
@@ -90,23 +96,20 @@ const Index = ({navigation}) => {
                 }>
                 <View style={styles.verticalContainer}>
                   <FastImage
-                    style={styles.image}
+                    style={styles.image2}
                     source={{uri: item.cover_image}}
                     resizeMode={FastImage.resizeMode.contain}
                   />
-                  <Text style={styles.text}>
-                    Rating : {item.average_rating}
-                  </Text>
+                  <Text style={styles.text}>Title : {item.title}</Text>
                 </View>
               </TouchableOpacity>
             )}
           />
-          <Text style={styles.popular}>Popular Book</Text>
         </View>
       );
     }
   } else {
-    <NoInternetConnection />;
+    return <NoInternetConnection />;
   }
 };
 
@@ -126,8 +129,10 @@ const styles = StyleSheet.create({
   },
   popular: {
     fontSize: moderateScale(14),
-    top: moderateScale(25),
+    // top: moderateScale(25),
     left: moderateScale(20),
+    marginTop: moderateScale(20),
+    marginBottom: moderateScale(25),
   },
   // kotak2: {
   //   width: moderateScale(100),
@@ -137,19 +142,28 @@ const styles = StyleSheet.create({
   //   marginLeft: moderateScale(20)
   // },
   image: {
-    width: moderateScale(100),
-    height: moderateScale(200),
-    marginLeft: moderateScale(0),
-    top: moderateScale(-28),
+    width: moderateScale(90),
+    height: moderateScale(110),
+    left: moderateScale(-10),
+    // marginLeft: moderateScale(0),
+    top: moderateScale(-5),
   },
   horizontalContainer: {
     marginTop: moderateScale(80),
-    marginLeft: moderateScale(20),
-    backgroundColor: 'white',
+    marginLeft: moderateScale(10),
+    left: moderateScale(20),
+    // backgroundColor: 'white',
+    height: moderateScale(170),
+    width: moderateScale(90),
   },
   verticalContainer: {
     width: moderateScale(100),
-    height: moderateScale(150),
+    height: moderateScale(220),
+    // top: moderateScale(-40),
+    left: moderateScale(10),
+    marginLeft: moderateScale(10),
+    marginBottom: moderateScale(20),
+    backgroundColor: 'white',
   },
   loadingContainer: {
     flex: 1,
@@ -160,5 +174,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     padding: 10,
+  },
+  text: {
+    textAlign: 'center',
+    top: moderateScale(20),
+  },
+  image2: {
+    width: moderateScale(120),
+    height: moderateScale(120),
+    top: moderateScale(10),
+    right: moderateScale(10),
   },
 });

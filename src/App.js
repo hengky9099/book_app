@@ -2,8 +2,9 @@ import {StyleSheet, Text, View} from 'react-native';
 import React, {useEffect} from 'react';
 import SplashScreen from 'react-native-splash-screen';
 import {Provider} from 'react-redux';
-import {store} from './store';
 import Router from './router/main';
+import {PersistGate} from 'redux-persist/lib/integration/react';
+import {persistedStore, store} from './store/index';
 
 const App = () => {
   useEffect(() => {
@@ -12,7 +13,9 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      <Router />
+      <PersistGate persistor={persistedStore}>
+        <Router />
+      </PersistGate>
     </Provider>
   );
 };
