@@ -11,7 +11,6 @@ import React from 'react';
 import {moderateScale} from 'react-native-size-matters';
 import axios from 'axios';
 import {BASE_URL} from '../../helpers/apiAccessToken';
-import NoInternetConnection from '../../component/NoInternetConnection';
 import {useDispatch, useSelector} from 'react-redux';
 import {SetUsername, SetPassword, SetEmail} from './redux/action';
 import {checkEmail, isValidPassword} from '../../helpers/validation';
@@ -19,7 +18,6 @@ import {checkEmail, isValidPassword} from '../../helpers/validation';
 const Index = ({navigation}) => {
   const dispatch = useDispatch();
   const {email, password, name} = useSelector(state => state.register);
-  const {connection} = useSelector(state => state.global);
 
   const data = {
     email: email,
@@ -35,7 +33,7 @@ const Index = ({navigation}) => {
         Alert.alert('Alert', 'Registration Success', [
           {
             text: 'OK',
-            onPress: () => navigation.navigate('Login'),
+            onPress: () => navigation.navigate('RegistrationCompleted'),
           },
         ]);
       } else if (!checkEmail(email) && isValidPassword(password)) {
@@ -49,48 +47,43 @@ const Index = ({navigation}) => {
       Alert.alert('Alert', error);
     }
   };
+  return (
+    <ScrollView style={styles.container}>
+      <Image
+        style={styles.logo}
+        source={require('../../assets/images/logo.png')}
+      />
+      <TextInput
+        style={styles.value}
+        onChangeText={value => dispatch(SetUsername(value))}
+        value={name}
+        placeholder="Full Name"
+      />
+      <TextInput
+        style={styles.value}
+        onChangeText={value => dispatch(SetEmail(value))}
+        value={email}
+        placeholder="Email"
+        textContentType="emailAddress"
+      />
+      <TextInput
+        style={styles.value}
+        onChangeText={value => dispatch(SetPassword(value))}
+        value={password}
+        placeholder="Password"
+        secureTextEntry={true}
+      />
+      <TouchableOpacity style={styles.button} onPress={register}>
+        <Text style={styles.buttonText}>Register</Text>
+      </TouchableOpacity>
 
-  if (connection) {
-    return (
-      <ScrollView style={styles.container}>
-        <Image
-          style={styles.logo}
-          source={require('../../assets/images/logo.png')}
-        />
-        <TextInput
-          style={styles.value}
-          onChangeText={value => dispatch(SetUsername(value))}
-          value={name}
-          placeholder="Full Name"
-        />
-        <TextInput
-          style={styles.value}
-          onChangeText={value => dispatch(SetEmail(value))}
-          value={email}
-          placeholder="Email"
-          textContentType="emailAddress"
-        />
-        <TextInput
-          style={styles.value}
-          onChangeText={value => dispatch(SetPassword(value))}
-          value={password}
-          placeholder="Password"
-          secureTextEntry={true}
-        />
-        <TouchableOpacity style={styles.button} onPress={register}>
-          <Text style={styles.buttonText}>Register</Text>
-        </TouchableOpacity>
+      <Text style={styles.text}>Don't have an account?</Text>
 
-        <Text style={styles.text}>Don't have an account?</Text>
-
-        <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-          <Text style={styles.textlogin}>Login</Text>
-        </TouchableOpacity>
-      </ScrollView>
-    );
-  } else {
-    return <NoInternetConnection />;
-  }
+      <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+        <Text style={styles.textlogin}>Login</Text>
+      </TouchableOpacity>
+    </ScrollView>
+  );
 };
 
 export default Index;

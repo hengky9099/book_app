@@ -3,7 +3,7 @@ import React from 'react';
 import {moderateScale} from 'react-native-size-matters';
 import {useNavigation} from '@react-navigation/native';
 
-const NoInternetConnection = () => {
+const NoInternetConnection = props => {
   const navigation = useNavigation();
 
   return (
@@ -11,9 +11,7 @@ const NoInternetConnection = () => {
       <Text style={styles.name}>
         No Internet Connection, Check your internet
       </Text>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigation.navigate('Login')}>
+      <TouchableOpacity style={styles.button} onPress={props.onCheck}>
         <Text style={styles.buttonText}>Back to Login</Text>
       </TouchableOpacity>
     </View>

@@ -9,18 +9,14 @@ import {
 } from 'react-native';
 import React, {useEffect} from 'react';
 import {moderateScale} from 'react-native-size-matters';
-import axios from 'axios';
-import {SetRecommendeds} from './redux/action';
+import {getDetailBookById, getRecommended} from './redux/action';
 import {useDispatch, useSelector} from 'react-redux';
 import FastImage from 'react-native-fast-image';
-import {SetRefreshing, SetLoading} from '../../store/actionGlobal';
 import NoInternetConnection from '../../component/NoInternetConnection';
-import {BOOK_URL} from '../../helpers/apiAccessToken';
 
 const Index = ({navigation}) => {
   const {recommendeds} = useSelector(state => state.home);
   const {refreshing, loading, connection} = useSelector(state => state.global);
-  const {token} = useSelector(state => state.login);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -28,24 +24,18 @@ const Index = ({navigation}) => {
   }, []);
 
   const recommended = async () => {
-    try {
-      dispatch(SetLoading(true));
-      const res = await axios.get(`${BOOK_URL}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        }, //${token}
-      });
-      console.log(res);
-
-      dispatch(SetRefreshing(true));
-      dispatch(SetRecommendeds(res.data.results));
-    } catch (error) {
-      console.log(error);
-    } finally {
-      dispatch(SetRefreshing(false));
-      dispatch(SetLoading(false));
-    }
+    dispatch(getRecommended());
   };
+
+  const getBookById = item => {
+    dispatch(getDetailBookById(item.id));
+  };
+
+  const topRatedBook = recommendeds
+    .sort(function (a, b) {
+      return b.average_rating - a.average_rating;
+    })
+    .slice(0, 6);
 
   if (connection) {
     if (loading) {
@@ -57,43 +47,41 @@ const Index = ({navigation}) => {
     } else {
       return (
         <View>
-          <Text style={styles.greeting}>Good Morning, Hengky!</Text>
-          <Text style={styles.recommended}>Recommended</Text>
           <FlatList
-            refreshControl={<RefreshControl refreshing={refreshing} />}
-            keyExtractor={item => item.id}
-            data={recommendeds}
-            renderItem={({item}) => (
-              <TouchableOpacity
-                onPress={() =>
-                  navigation.navigate('BookDetail', {datas: item.id})
-                }>
-                <View style={styles.horizontalContainer}>
-                  <FastImage
-                    style={styles.image}
-                    source={{uri: item.cover_image}}
-                    resizeMode={FastImage.resizeMode.contain}
-                  />
-                  {/* <Text style={styles.text}>
+            ListHeaderComponent={
+              <View>
+                <Text style={styles.greeting}>Good Morning, Hengky!</Text>
+                <Text style={styles.recommended}>Recommended</Text>
+                <FlatList
+                  refreshControl={<RefreshControl refreshing={refreshing} />}
+                  keyExtractor={item => item.id}
+                  data={recommendeds}
+                  renderItem={({item}) => (
+                    <TouchableOpacity onPress={() => getBookById(item)}>
+                      <View style={styles.horizontalContainer}>
+                        <FastImage
+                          style={styles.image}
+                          source={{uri: item.cover_image}}
+                          resizeMode={FastImage.resizeMode.contain}
+                        />
+                        {/* <Text style={styles.text}>
                     Rating : {item.average_rating}
                   </Text> */}
-                </View>
-              </TouchableOpacity>
-            )}
-            horizontal={true}
-          />
-          <Text style={styles.popular}>Popular Book</Text>
-          <FlatList
+                      </View>
+                    </TouchableOpacity>
+                  )}
+                  horizontal={true}
+                />
+                <Text style={styles.popular}>Popular Book</Text>
+              </View>
+            }
             refreshControl={<RefreshControl refreshing={refreshing} />}
             keyExtractor={item => item.id}
             numColumns={3}
-            data={recommendeds}
+            data={topRatedBook}
             horizontal={false}
             renderItem={({item}) => (
-              <TouchableOpacity
-                onPress={() =>
-                  navigation.navigate('BookDetail', {datas: item.id})
-                }>
+              <TouchableOpacity onPress={() => getBookById(item)}>
                 <View style={styles.verticalContainer}>
                   <FastImage
                     style={styles.image2}
@@ -109,7 +97,7 @@ const Index = ({navigation}) => {
       );
     }
   } else {
-    return <NoInternetConnection />;
+    return <NoInternetConnection onCheck={dispatch(NoInternetConnection())} />;
   }
 };
 
@@ -129,18 +117,11 @@ const styles = StyleSheet.create({
   },
   popular: {
     fontSize: moderateScale(14),
-    // top: moderateScale(25),
+    top: moderateScale(-40),
     left: moderateScale(20),
     marginTop: moderateScale(20),
     marginBottom: moderateScale(25),
   },
-  // kotak2: {
-  //   width: moderateScale(100),
-  //   height: moderateScale(200),
-  //   backgroundColor: 'black',
-  //   top: moderateScale(40),
-  //   marginLeft: moderateScale(20)
-  // },
   image: {
     width: moderateScale(90),
     height: moderateScale(110),
@@ -159,7 +140,7 @@ const styles = StyleSheet.create({
   verticalContainer: {
     width: moderateScale(100),
     height: moderateScale(220),
-    // top: moderateScale(-40),
+    top: moderateScale(-50),
     left: moderateScale(10),
     marginLeft: moderateScale(10),
     marginBottom: moderateScale(20),

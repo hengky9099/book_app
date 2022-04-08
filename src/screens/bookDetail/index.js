@@ -8,24 +8,20 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import React, {useEffect} from 'react';
-import {SetBookDetail} from './redux/action';
-import {SetRefreshing, SetLoading} from '../../store/actionGlobal';
 import {useDispatch, useSelector} from 'react-redux';
-import axios from 'axios';
 import FastImage from 'react-native-fast-image';
 import {moderateScale} from 'react-native-size-matters';
 import Icon from 'react-native-vector-icons/Feather';
 import Share from 'react-native-share';
 import notifikasi from '../../component/notification';
 import NoInternetConnection from '../../component/NoInternetConnection';
-import {BOOK_URL} from '../../helpers/apiAccessToken';
 import 'intl';
 import 'intl/locale-data/jsonp/en';
+import {getDetailBookById} from '../home/redux/action';
 
-const Index = ({route, navigation}) => {
-  const {bookdetail} = useSelector(state => state.bookdetail);
+const Index = ({navigation}) => {
   const {refreshing, loading, connection} = useSelector(state => state.global);
-  const {token} = useSelector(state => state.login);
+  const {detailBook} = useSelector(state => state.home);
 
   const dispatch = useDispatch();
 
@@ -43,9 +39,9 @@ const Index = ({route, navigation}) => {
 
   const ShareOption = async () => {
     const shareOptions = {
-      message: `Judul : "${bookdetail.title}"
+      message: `Judul : "${detailBook.title}"
       Saya ingin merekomendasikan buku ini kepada anda.
-      dengan harga "${bookdetail.price}"`,
+      dengan harga "${detailBook.price}"`,
     };
     try {
       const ShareResponse = await Share.open(shareOptions);
@@ -55,22 +51,7 @@ const Index = ({route, navigation}) => {
   };
 
   const bookdetails = async () => {
-    try {
-      dispatch(SetLoading(true));
-      const res = await axios.get(`${BOOK_URL}/${route.params.datas}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        }, //${token}
-      });
-
-      dispatch(SetRefreshing(true));
-      dispatch(SetBookDetail(res.data));
-    } catch (error) {
-      console.log(error);
-    } finally {
-      dispatch(SetRefreshing(false));
-      dispatch(SetLoading(false));
-    }
+    dispatch(getDetailBookById());
   };
 
   const love = () => {
@@ -79,7 +60,7 @@ const Index = ({route, navigation}) => {
     notifikasi.kirimNotifikasi(
       '1',
       'Notifikasi',
-      `Anda telah menyukai buku ${bookdetail.title}`,
+      `Anda telah menyukai buku ${detailBook.title}`,
     );
   };
 
@@ -91,7 +72,7 @@ const Index = ({route, navigation}) => {
         </View>
       );
     } else {
-      const price = rupiah(bookdetail.price);
+      const price = rupiah(detailBook.price);
       return (
         <ScrollView refreshControl={<RefreshControl refreshing={refreshing} />}>
           <TouchableOpacity
@@ -114,22 +95,22 @@ const Index = ({route, navigation}) => {
           <View style={styles.cardcontainer}>
             <FastImage
               style={styles.image}
-              source={{uri: bookdetail.cover_image}}
+              source={{uri: detailBook.cover_image}}
               resizeMode={FastImage.resizeMode.contain}
             />
-            <Text style={styles.text}>Title : {bookdetail.title}</Text>
-            <Text style={styles.text}>Author : {bookdetail.author}</Text>
-            <Text style={styles.text}>Publisher : {bookdetail.publisher}</Text>
+            <Text style={styles.text}>Title : {detailBook.title}</Text>
+            <Text style={styles.text}>Author : {detailBook.author}</Text>
+            <Text style={styles.text}>Publisher : {detailBook.publisher}</Text>
           </View>
 
           <View style={styles.rowview}>
             <View>
-              <Text>Rating</Text>
-              <Text style={styles.rowtext}>{bookdetail.average_rating}</Text>
+              <Text style={styles.textbold}>Rating</Text>
+              <Text style={styles.rowtext}>{detailBook.average_rating}</Text>
             </View>
             <View>
-              <Text>Total Sale</Text>
-              <Text style={styles.rowtext}>{bookdetail.total_sale}</Text>
+              <Text style={styles.textbold}>Total Sale</Text>
+              <Text style={styles.rowtext}>{detailBook.total_sale}</Text>
             </View>
             <TouchableOpacity style={styles.buy}>
               <Text style={styles.buttontext}>Buy {price}</Text>
@@ -138,7 +119,7 @@ const Index = ({route, navigation}) => {
 
           <View>
             <Text style={styles.overview}>Overview</Text>
-            <Text style={styles.synopsis}>{bookdetail.synopsis}</Text>
+            <Text style={styles.synopsis}>{detailBook.synopsis}</Text>
           </View>
         </ScrollView>
       );
@@ -170,7 +151,7 @@ const styles = StyleSheet.create({
   },
   buy: {
     backgroundColor: '#0275d8',
-    width: moderateScale(100),
+    width: moderateScale(120),
     height: moderateScale(40),
     justifyContent: 'center',
     alignItems: 'center',
@@ -223,5 +204,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     padding: 10,
+  },
+  textbold: {
+    fontWeight: 'bold',
+    color: 'black',
   },
 });

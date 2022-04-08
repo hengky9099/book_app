@@ -5,7 +5,6 @@ import {
   TouchableOpacity,
   Text,
   Image,
-  Alert,
 } from 'react-native';
 import React from 'react';
 import {moderateScale} from 'react-native-size-matters';
@@ -17,7 +16,7 @@ import {BASE_URL} from '../../helpers/apiAccessToken';
 import {SetLoading} from '../../store/actionGlobal';
 
 const Index = ({navigation}) => {
-  const {email, password, token} = useSelector(state => state.login);
+  const {email, password} = useSelector(state => state.login);
   const dispatch = useDispatch();
   const {connection} = useSelector(state => state.global);
 
@@ -36,6 +35,7 @@ const Index = ({navigation}) => {
       if (res.status === 201 || res.status === 200) getToken();
       navigation.navigate('Home');
     } catch (error) {
+      Alert.alert('Alert', `Invalid Email`);
       console.log(error);
     } finally {
       SetLoading(false);
