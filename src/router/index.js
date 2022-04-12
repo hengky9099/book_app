@@ -9,6 +9,7 @@ import BookDetail from '../screens/bookDetail/index';
 import NetInfo from '@react-native-community/netinfo';
 import {checkConnection} from '../store/actionGlobal';
 import {useDispatch} from 'react-redux';
+import PDF from '../component/pdf';
 
 const Stack = createNativeStackNavigator();
 
@@ -40,6 +41,7 @@ const Index = () => {
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Register" component={Register} />
       <Stack.Screen name="BookDetail" component={BookDetail} />
+      <Stack.Screen name="PDF" component={PDF} />
     </Stack.Navigator>
   );
 };

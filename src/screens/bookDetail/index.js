@@ -18,6 +18,7 @@ import NoInternetConnection from '../../component/NoInternetConnection';
 import 'intl';
 import 'intl/locale-data/jsonp/en';
 import {getDetailBookById} from '../home/redux/action';
+import PDF from '../../component/pdf';
 
 const Index = ({navigation}) => {
   const {refreshing, loading, connection} = useSelector(state => state.global);
@@ -112,7 +113,9 @@ const Index = ({navigation}) => {
               <Text style={styles.textbold}>Total Sale</Text>
               <Text style={styles.rowtext}>{detailBook.total_sale}</Text>
             </View>
-            <TouchableOpacity style={styles.buy}>
+            <TouchableOpacity
+              style={styles.buy}
+              onPress={() => navigation.navigate('PDF')}>
               <Text style={styles.buttontext}>Buy {price}</Text>
             </TouchableOpacity>
           </View>
