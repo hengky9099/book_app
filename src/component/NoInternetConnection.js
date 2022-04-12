@@ -7,7 +7,7 @@ const NoInternetConnection = props => {
   const navigation = useNavigation();
 
   return (
-    <View>
+    <View testID="NoInternetConnection">
       <Text style={styles.name}>
         No Internet Connection, Check your internet
       </Text>

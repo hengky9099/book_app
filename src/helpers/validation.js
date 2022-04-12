@@ -1,4 +1,3 @@
-import NetInfo from '@react-native-community/netinfo';
 import 'intl';
 import 'intl/locale-data/jsonp/en';
 
@@ -37,3 +36,5 @@ export const isValidPassword = givenPassword => {
     return false; //"ERROR: Invalid Type Data"
   }
 };
+
+module.exports = {isValidPassword, checkEmail};

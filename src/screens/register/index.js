@@ -29,7 +29,6 @@ const Index = ({navigation}) => {
     try {
       if (checkEmail(email) && isValidPassword(password)) {
         const res = await axios.post(`${BASE_URL}/register`, data);
-        console.log(res);
         Alert.alert('Alert', 'Registration Success', [
           {
             text: 'OK',
