@@ -40,7 +40,6 @@ export const getDetailBookById = id => async dispatch => {
         Authorization: `Bearer ${token}`,
       }, //${token}
     });
-    console.log(res);
     dispatch(SetRefreshing(true));
     dispatch(setDetailBookReducer(res.data));
     navigate('BookDetail');

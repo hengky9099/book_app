@@ -27,17 +27,8 @@ export default class PDFExample extends React.Component {
       <View style={styles.container}>
         <Pdf
           source={source}
-          onLoadComplete={(numberOfPages, filePath) => {
-            console.log(`Number of pages: ${numberOfPages}`);
-          }}
-          onPageChanged={(page, numberOfPages) => {
-            console.log(`Current page: ${page}`);
-          }}
           onError={error => {
             console.log(error);
-          }}
-          onPressLink={uri => {
-            console.log(`Link pressed: ${uri}`);
           }}
           style={styles.pdf}
         />

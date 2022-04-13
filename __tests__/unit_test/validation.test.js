@@ -1,6 +1,6 @@
 const {expect} = require('@jest/globals');
 const {isValidPassword, checkEmail} = require('../../src/helpers/validation');
-// const {topRatedBook} = require('../../src/screens/home/index');
+const {topRatedBook} = require('../../src/screens/home/index');
 
 describe('UNIT TEST', () => {
   describe('Password Should Be Valid', () => {
@@ -66,9 +66,9 @@ describe('UNIT TEST', () => {
     });
   });
 
-  //   describe('Sort Should be working', () => {
-  //     test('test', () => {
-  //       expect(topRatedBook([5, 6, 3, 4, 1, 7])).toEqual(7);
-  //     });
-  //   });
+  describe('Sort Should be working', () => {
+    test('test', () => {
+      expect(topRatedBook([5, 6, 3, 4, 1, 7])).toEqual(7);
+    });
+  });
 });

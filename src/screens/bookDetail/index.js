@@ -18,7 +18,7 @@ import NoInternetConnection from '../../component/NoInternetConnection';
 import 'intl';
 import 'intl/locale-data/jsonp/en';
 import {getDetailBookById} from '../home/redux/action';
-import PDF from '../../component/pdf';
+import YoutubePlayer from 'react-native-youtube-iframe';
 
 const Index = ({navigation}) => {
   const {refreshing, loading, connection} = useSelector(state => state.global);
@@ -121,6 +121,13 @@ const Index = ({navigation}) => {
           </View>
 
           <View>
+            <Text style={styles.trailer}>Trailer</Text>
+            <View style={styles.youtube}>
+              <YoutubePlayer height={200} width={300} videoId={'5NYt1qirBWg'} />
+            </View>
+          </View>
+
+          <View>
             <Text style={styles.overview}>Overview</Text>
             <Text style={styles.synopsis}>{detailBook.synopsis}</Text>
           </View>
@@ -138,6 +145,14 @@ const styles = StyleSheet.create({
     width: moderateScale(100),
     height: moderateScale(200),
     marginLeft: moderateScale(20),
+  },
+  trailer: {
+    fontWeight: 'bold',
+    fontSize: moderateScale(16),
+    marginTop: moderateScale(30),
+    marginLeft: moderateScale(20),
+    color: 'black',
+    marginBottom: moderateScale(20),
   },
   cardcontainer: {
     backgroundColor: '#ffffff',
@@ -177,14 +192,15 @@ const styles = StyleSheet.create({
   overview: {
     fontWeight: 'bold',
     fontSize: moderateScale(16),
-    marginTop: moderateScale(30),
     marginLeft: moderateScale(20),
+    color: 'black',
   },
   synopsis: {
     left: moderateScale(20),
     width: moderateScale(320),
     marginTop: moderateScale(10),
     height: moderateScale(350),
+    color: 'black',
   },
   backicon: {
     left: moderateScale(20),
@@ -211,5 +227,8 @@ const styles = StyleSheet.create({
   textbold: {
     fontWeight: 'bold',
     color: 'black',
+  },
+  youtube: {
+    left: moderateScale(25),
   },
 });
