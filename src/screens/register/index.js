@@ -28,6 +28,7 @@ const Index = ({navigation}) => {
   const register = async () => {
     try {
       if (checkEmail(email) && isValidPassword(password)) {
+        // eslint-disable-next-line no-unused-vars
         const res = await axios.post(`${BASE_URL}/register`, data);
         Alert.alert('Alert', 'Registration Success', [
           {

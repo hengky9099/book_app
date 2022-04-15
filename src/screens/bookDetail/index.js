@@ -28,7 +28,7 @@ const Index = ({navigation}) => {
 
   useEffect(() => {
     bookdetails();
-  }, []);
+  });
 
   const rupiah = number => {
     return new Intl.NumberFormat('id-ID', {
@@ -45,6 +45,7 @@ const Index = ({navigation}) => {
       dengan harga "${detailBook.price}"`,
     };
     try {
+      // eslint-disable-next-line no-unused-vars
       const ShareResponse = await Share.open(shareOptions);
     } catch (error) {
       console.log('error: ', error);

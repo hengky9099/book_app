@@ -21,7 +21,7 @@ const Index = ({navigation}) => {
 
   useEffect(() => {
     recommended();
-  }, []);
+  });
 
   const recommended = async () => {
     dispatch(getRecommended());

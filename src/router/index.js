@@ -1,4 +1,3 @@
-import {StyleSheet, Text, View} from 'react-native';
 import React, {useEffect} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Register from '../screens/register/index';
@@ -18,7 +17,7 @@ const Index = () => {
 
   useEffect(() => {
     isConnecteds();
-  }, []);
+  });
 
   const isConnecteds = () =>
     NetInfo.fetch()
