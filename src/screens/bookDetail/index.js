@@ -27,8 +27,11 @@ const Index = ({navigation}) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    const bookdetails = async () => {
+      dispatch(getDetailBookById());
+    };
     bookdetails();
-  });
+  }, [dispatch]);
 
   const rupiah = number => {
     return new Intl.NumberFormat('id-ID', {
@@ -50,10 +53,6 @@ const Index = ({navigation}) => {
     } catch (error) {
       console.log('error: ', error);
     }
-  };
-
-  const bookdetails = async () => {
-    dispatch(getDetailBookById());
   };
 
   const love = () => {

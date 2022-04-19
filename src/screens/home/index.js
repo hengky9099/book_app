@@ -20,12 +20,11 @@ const Index = ({navigation}) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    const recommended = async () => {
+      dispatch(getRecommended());
+    };
     recommended();
-  });
-
-  const recommended = async () => {
-    dispatch(getRecommended());
-  };
+  }, [dispatch]);
 
   const getBookById = item => {
     dispatch(getDetailBookById(item.id));
