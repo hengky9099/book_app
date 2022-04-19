@@ -19,7 +19,7 @@ const mocked = jest.fn();
 
 describe('Register Testing', () => {
   const component = create(reduxTesting(<Login />));
-  describe('Default testing', () => {
+  describe('Default testings', () => {
     describe('Registration Completed Testing', () => {
       describe('should render', () => {
         test('should render correctly', () => {
