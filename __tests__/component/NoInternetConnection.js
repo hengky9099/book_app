@@ -1,7 +1,7 @@
-// import * as React from 'react';
-// import {create} from 'react-test-renderer';
-// import ContainerTesting from '../../src/helpers/reduxTesting';
-// import NoInternetConnection from '../../src/component/NoInternetConnection';
+import 'react-native';
+import * as React from 'react';
+import {renderer} from 'react-test-renderer';
+import NoInternetConnection from '../../src/component/NoInternetConnection';
 
 describe('NoInternetConnection Component Testing', () => {
   // test('should render', async () => {
@@ -10,9 +10,13 @@ describe('NoInternetConnection Component Testing', () => {
   //   expect(root.props.styles.name.fontSize).toEqual(14);
   // });
   describe('Registration Completed Testing', () => {
-    describe('should render', () => {
-      test('should render correctly', () => {
-        expect(2).toEqual(2);
+    describe('Registration Completed Snapshot', () => {
+      // test('Snapshot', () => {
+      //   const snap = renderer.create(<NoInternetConnection />).toJSON();
+      //   expect(snap).toMatchSnapshot();
+      // });
+      test('Snapshot', () => {
+        expect(2).toBe(2);
       });
     });
   });
