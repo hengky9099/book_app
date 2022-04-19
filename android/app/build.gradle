@@ -147,8 +147,8 @@ android {
         applicationId "com.bookapp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 7
-        versionName "2.0.3"
+        versionCode 8
+        versionName "2.0.4"
     }
     splits {
         abi {
