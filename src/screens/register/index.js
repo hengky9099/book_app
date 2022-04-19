@@ -54,6 +54,7 @@ const Index = ({navigation}) => {
         source={require('../../assets/images/logo.png')}
       />
       <TextInput
+        testID="registration.username"
         style={styles.value}
         onChangeText={value => dispatch(SetUsername(value))}
         value={name}
@@ -73,13 +74,18 @@ const Index = ({navigation}) => {
         placeholder="Password"
         secureTextEntry={true}
       />
-      <TouchableOpacity style={styles.button} onPress={register}>
+      <TouchableOpacity
+        testID="RegisterButton"
+        style={styles.button}
+        onPress={register}>
         <Text style={styles.buttonText}>Register</Text>
       </TouchableOpacity>
 
-      <Text style={styles.text}>Don't have an account?</Text>
+      <Text style={styles.text}>Already have an account?</Text>
 
-      <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+      <TouchableOpacity
+        testID="LoginButton"
+        onPress={() => navigation.navigate('Login')}>
         <Text style={styles.textlogin}>Login</Text>
       </TouchableOpacity>
     </ScrollView>

@@ -1,0 +1,33 @@
+name: Deploy to telegram
+
+on:
+  workflow_dispatch:
+  release:
+    types: [published]
+
+jobs:
+  send-to-telegram:
+    name: send file to telegram
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: install modules
+        run: yarn
+
+      - name: made gradle executable
+        run: chmod +x ./android/gradle
+
+      - name: generate apk
+        run: |
+        cd android 
+        ./gradlew assembleRelease
+        cd ..
+
+      # - name: send file as message
+      #   run: |
+      #   cd android/app/build/outputs/apk/release/
+      #   curl -X POST -H 'Content-Type: multipart/form-data' -F "chat_id=${{secrets.TG_CHAT_ID}}" -F document=@app-release.apk ${{secrets.TG_BOT_TOKEN}}/sendDocument
+
+      # add keystore

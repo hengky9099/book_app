@@ -1,5 +1,10 @@
 const {expect} = require('@jest/globals');
-const {isValidPassword, checkEmail} = require('../../src/helpers/validation');
+const {
+  isValidPassword,
+  checkEmail,
+  rupiah,
+  Sort,
+} = require('../../src/helpers/validation');
 
 describe('UNIT TEST', () => {
   describe('Password Should Be Valid', () => {
@@ -62,6 +67,39 @@ describe('UNIT TEST', () => {
     });
     test('with 2 @', () => {
       expect(checkEmail('Hengky123@gmail@co.id')).toBe(false);
+    });
+  });
+
+  describe('Rupiah function should be return the same nominal', () => {
+    test('should return Rp 500', () => {
+      expect(rupiah('500')).toBe('Rp 500');
+    });
+    test('should return Rp 1.000', () => {
+      expect(rupiah('1000')).toBe('Rp 1.000');
+    });
+    test('should return Rp 15.000', () => {
+      expect(rupiah('15000')).toBe('Rp 15.000');
+    });
+    test('should return Rp 199.000', () => {
+      expect(rupiah('199000')).toBe('Rp 199.000');
+    });
+    test('should return Rp 1.000.000', () => {
+      expect(rupiah('1000000')).toBe('Rp 1.000.000');
+    });
+    test('should return Rp 1.000.000.234.123.456', () => {
+      expect(rupiah('1000000234123456')).toBe('Rp 1.000.000.234.123.456');
+    });
+    test('Number', () => {
+      expect(rupiah(500)).toBe('Rp 500');
+    });
+  });
+
+  describe('Rupiah function should be return the Wrong nominal', () => {
+    test('Object', () => {
+      expect(rupiah({})).toBe('RpNaN');
+    });
+    test('Array', () => {
+      expect(rupiah(['500'])).toBe('Rp 500');
     });
   });
 });

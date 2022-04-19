@@ -14,6 +14,7 @@ const Index = ({navigation}) => {
         We sent email verification to your email
       </Text>
       <TouchableOpacity
+        testID="RegistrationCompletedButton"
         style={styles.button}
         onPress={() => navigation.navigate('Login')}>
         <Text style={styles.buttonText}>Back to Login</Text>

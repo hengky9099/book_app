@@ -8,15 +8,24 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "postversion": "react-native-version",
+    "published": "np",
+    "build:release": "cd android && ./gradlew clean && ./gradlew cleanBuildCache && ./gradlew bundleRelease assembleRelease && cd .."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hengky9099/book_app"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.17.3",
     "@react-native-community/netinfo": "^8.2.0",
     "@react-navigation/native": "^6.0.8",
     "@react-navigation/native-stack": "^6.5.2",
+    "@testing-library/jest-dom": "^5.16.4",
     "axios": "^0.26.1",
     "intl": "^1.2.5",
+    "np": "^7.6.1",
     "react": "17.0.2",
     "react-native": "0.67.4",
     "react-native-blob-util": "^0.15.0",
@@ -43,12 +52,14 @@
     "@babel/core": "^7.17.8",
     "@babel/runtime": "^7.17.8",
     "@react-native-community/eslint-config": "^3.0.1",
+    "@testing-library/react-native": "^9.1.0",
     "babel-jest": "^27.5.1",
     "eslint": "^7.32.0",
     "husky": "^7.0.0",
     "jest": "^27.5.1",
     "metro-react-native-babel-preset": "^0.69.1",
     "react-native-testing-library": "^6.0.0",
+    "react-native-version": "^4.0.0",
     "react-test-renderer": "17.0.2"
   },
   "jest": {
