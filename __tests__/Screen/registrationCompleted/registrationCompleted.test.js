@@ -1,9 +1,7 @@
 import * as React from 'react';
-import {create} from 'react-test-renderer';
+import {create, act} from 'react-test-renderer';
 import reduxTesting from '../../../src/helpers/reduxTesting';
 import RegistrationCompleted from '../../../src/screens/registrationCompleted/index';
-import {render} from '@testing-library/react-native';
-import renderer from 'react-test-renderer';
 
 jest.mock('redux-persist', () => {
   const real = jest.requireActual('redux-persist');
@@ -15,24 +13,39 @@ jest.mock('redux-persist', () => {
   };
 });
 
+jest.mock('@react-navigation/native');
+
+const navigation = {
+  navigate: jest.fn(),
+};
+
 describe('Registration Completed Testing', () => {
+  const component = create(
+    reduxTesting(<RegistrationCompleted navigation={navigation} />),
+  );
+  const root = component.root;
+
+  describe('button to login', () => {
+    test('navigate to login', () => {
+      const button = component.root.findByProps({
+        testID: 'RegistrationCompletedButton',
+      }).props;
+
+      act(() => button.onPress());
+      expect(navigation.navigate).toBeCalledWith('Login');
+    });
+  });
+
   describe('should render', () => {
     test('default element', async () => {
-      const {getAllByText} = render(<RegistrationCompleted />);
-      const component = create(reduxTesting(<RegistrationCompleted />));
-      const root = component.root;
       expect(root.props.store).toBeTruthy();
-      expect(getAllByText('Registration Completed!').length).toBe(1);
     });
 
-    test('button tests', () => {
-      const {getAllByText} = render(<RegistrationCompleted />);
-      expect(getAllByText('Back to Login').length).toBe(1);
-    });
-
-    test('Snapshot', () => {
-      const tree = renderer.create(<RegistrationCompleted />).toJSON();
-      expect(tree).toMatchSnapshot();
+    describe('Snapshot testing', () => {
+      test('Snapshot', () => {
+        const tree = create(<RegistrationCompleted />).toJSON();
+        expect(tree).toMatchSnapshot();
+      });
     });
   });
 });

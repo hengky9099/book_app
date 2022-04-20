@@ -83,6 +83,7 @@ exports[`Login Testing Snapshot Login Snapshot 1`] = `
           "width": 408.57142857142856,
         }
       }
+      testID="HomeButton"
     >
       <Text
         style={
@@ -124,6 +125,7 @@ exports[`Login Testing Snapshot Login Snapshot 1`] = `
         "opacity": 1,
       }
     }
+    testID="RegisterButton"
   >
     <Text
       style={

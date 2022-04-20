@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Registration Completed Testing should render Snapshot 1`] = `
+exports[`Registration Completed Testing should render Snapshot testing Snapshot 1`] = `
 <View
   style={
     Object {

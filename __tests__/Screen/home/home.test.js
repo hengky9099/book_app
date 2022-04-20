@@ -1,6 +1,6 @@
 import React from 'react';
 import Home from '../../../src/screens/home/index';
-import {create} from 'react-test-renderer';
+import {act, create} from 'react-test-renderer';
 import ContainerTesting from '../../../src/helpers/reduxTesting';
 
 describe('Home Testing', () => {
@@ -13,6 +13,13 @@ describe('Home Testing', () => {
       expect(home).toBeTruthy();
       expect(typeof home.recommendeds).toEqual('object');
       expect(typeof home.detailBook).toEqual('object');
+    });
+  });
+
+  describe('UseEffect test', () => {
+    test('should run useeffect', () => {
+      jest.useFakeTimers();
+      act(() => jest.runAllTimers());
     });
   });
 
