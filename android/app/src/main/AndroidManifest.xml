@@ -12,7 +12,6 @@
       android:icon="@mipmap/logo"
       android:roundIcon="@mipmap/logo"
       android:allowBackup="false"
-      android:usesClearTextTraffic="true"
       android:theme="@style/AppTheme">
       <activity
         android:name=".MainActivity"
