@@ -3,6 +3,7 @@ import {create} from 'react-test-renderer';
 import reduxTesting from '../../../src/helpers/reduxTesting';
 import RegistrationCompleted from '../../../src/screens/registrationCompleted/index';
 import {render} from '@testing-library/react-native';
+import renderer from 'react-test-renderer';
 
 jest.mock('redux-persist', () => {
   const real = jest.requireActual('redux-persist');
@@ -27,6 +28,11 @@ describe('Registration Completed Testing', () => {
     test('button tests', () => {
       const {getAllByText} = render(<RegistrationCompleted />);
       expect(getAllByText('Back to Login').length).toBe(1);
+    });
+
+    test('Snapshot', () => {
+      const tree = renderer.create(<RegistrationCompleted />).toJSON();
+      expect(tree).toMatchSnapshot();
     });
   });
 });

@@ -1,0 +1,417 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` Detail Testing Detail Snapshot Snapshot 1`] = `
+<RCTScrollView
+  refreshControl={
+    <RefreshControlMock
+      refreshing={false}
+    />
+  }
+>
+  <RCTRefreshControl />
+  <View>
+    <View
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "left": 31.428571428571427,
+          "opacity": 1,
+          "top": 31.428571428571427,
+        }
+      }
+    >
+      <Text
+        allowFontScaling={false}
+        selectable={false}
+        style={
+          Array [
+            Object {
+              "color": "black",
+              "fontSize": 30,
+            },
+            undefined,
+            Object {
+              "fontFamily": "Feather",
+              "fontStyle": "normal",
+              "fontWeight": "normal",
+            },
+            Object {},
+          ]
+        }
+      >
+        
+      </Text>
+    </View>
+    <View
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "left": 392.85714285714283,
+          "opacity": 1,
+          "top": -15.714285714285714,
+        }
+      }
+    >
+      <Text
+        allowFontScaling={false}
+        selectable={false}
+        style={
+          Array [
+            Object {
+              "color": "black",
+              "fontSize": 30,
+            },
+            undefined,
+            Object {
+              "fontFamily": "Feather",
+              "fontStyle": "normal",
+              "fontWeight": "normal",
+            },
+            Object {},
+          ]
+        }
+      >
+        
+      </Text>
+    </View>
+    <View
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "left": 471.42857142857144,
+          "opacity": 1,
+          "top": -62.857142857142854,
+        }
+      }
+    >
+      <Text
+        allowFontScaling={false}
+        selectable={false}
+        style={
+          Array [
+            Object {
+              "color": "black",
+              "fontSize": 30,
+            },
+            undefined,
+            Object {
+              "fontFamily": "Feather",
+              "fontStyle": "normal",
+              "fontWeight": "normal",
+            },
+            Object {},
+          ]
+        }
+      >
+        
+      </Text>
+    </View>
+    <View
+      style={
+        Object {
+          "backgroundColor": "#ffffff",
+          "height": 314.2857142857143,
+          "marginLeft": 47.14285714285714,
+          "marginTop": -15.714285714285714,
+          "width": 471.42857142857144,
+        }
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "overflow": "hidden",
+            },
+            Object {
+              "height": 314.2857142857143,
+              "marginLeft": 31.428571428571427,
+              "width": 157.14285714285714,
+            },
+          ]
+        }
+      >
+        <FastImageView
+          resizeMode="contain"
+          source={
+            Object {
+              "uri": undefined,
+            }
+          }
+          style={
+            Object {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            }
+          }
+        />
+      </View>
+      <Text
+        style={
+          Object {
+            "borderRadius": 15.714285714285714,
+            "left": 204.28571428571428,
+            "top": -267.1428571428571,
+            "width": 235.71428571428572,
+          }
+        }
+      >
+        Title : 
+      </Text>
+      <Text
+        style={
+          Object {
+            "borderRadius": 15.714285714285714,
+            "left": 204.28571428571428,
+            "top": -267.1428571428571,
+            "width": 235.71428571428572,
+          }
+        }
+      >
+        Author : 
+      </Text>
+      <Text
+        style={
+          Object {
+            "borderRadius": 15.714285714285714,
+            "left": 204.28571428571428,
+            "top": -267.1428571428571,
+            "width": 235.71428571428572,
+          }
+        }
+      >
+        Publisher : 
+      </Text>
+    </View>
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "white",
+          "flexDirection": "row",
+          "height": 110,
+          "justifyContent": "space-around",
+          "marginTop": 78.57142857142857,
+        }
+      }
+    >
+      <View>
+        <Text
+          style={
+            Object {
+              "color": "black",
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Rating
+        </Text>
+        <Text
+          style={
+            Object {
+              "textAlign": "center",
+            }
+          }
+        />
+      </View>
+      <View>
+        <Text
+          style={
+            Object {
+              "color": "black",
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Total Sale
+        </Text>
+        <Text
+          style={
+            Object {
+              "textAlign": "center",
+            }
+          }
+        />
+      </View>
+      <View
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#0275d8",
+            "borderRadius": 15.714285714285714,
+            "height": 62.857142857142854,
+            "justifyContent": "center",
+            "opacity": 1,
+            "width": 188.57142857142856,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "white",
+            }
+          }
+        >
+          Buy 
+          RpNaN
+        </Text>
+      </View>
+    </View>
+    <View>
+      <Text
+        style={
+          Object {
+            "color": "black",
+            "fontSize": 25.142857142857142,
+            "fontWeight": "bold",
+            "marginBottom": 31.428571428571427,
+            "marginLeft": 31.428571428571427,
+            "marginTop": 47.14285714285714,
+          }
+        }
+      >
+        Trailer
+      </Text>
+      <View
+        style={
+          Object {
+            "left": 39.285714285714285,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "height": 200,
+              "width": 300,
+            }
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "flex": 1,
+                  "overflow": "hidden",
+                },
+                undefined,
+              ]
+            }
+          >
+            <RNCWebView
+              allowsFullscreenVideo={true}
+              allowsInlineMediaPlayback={true}
+              bounces={false}
+              cacheEnabled={true}
+              injectedJavaScriptBeforeContentLoadedForMainFrameOnly={true}
+              injectedJavaScriptForMainFrameOnly={true}
+              javaScriptEnabled={true}
+              mediaPlaybackRequiresUserAction={false}
+              messagingEnabled={true}
+              onContentProcessDidTerminate={[Function]}
+              onHttpError={[Function]}
+              onLoadingError={[Function]}
+              onLoadingFinish={[Function]}
+              onLoadingProgress={[Function]}
+              onLoadingStart={[Function]}
+              onMessage={[Function]}
+              onShouldStartLoadWithRequest={[Function]}
+              source={
+                Object {
+                  "uri": "https://lonelycpp.github.io/react-native-youtube-iframe/iframe.html?data=%7B%22rel_s%22:0,%22loop_s%22:0,%22videoId_s%22:%225NYt1qirBWg%22,%22controls_s%22:1,%22contentScale_s%22:1,%22cc_lang_pref_s%22:%22%22,%22allowWebViewZoom%22:false,%22modestbranding_s%22:0,%22preventFullScreen_s%22:1,%22showClosedCaptions_s%22:0%7D",
+                }
+              }
+              style={
+                Array [
+                  Object {
+                    "flex": 1,
+                    "overflow": "hidden",
+                  },
+                  Object {
+                    "backgroundColor": "#ffffff",
+                  },
+                  Array [
+                    Object {
+                      "backgroundColor": "transparent",
+                    },
+                    undefined,
+                  ],
+                ]
+              }
+              textInteractionEnabled={true}
+              useSharedProcessPool={true}
+              userAgent=""
+            />
+          </View>
+        </View>
+      </View>
+    </View>
+    <View>
+      <Text
+        style={
+          Object {
+            "color": "black",
+            "fontSize": 25.142857142857142,
+            "fontWeight": "bold",
+            "marginLeft": 31.428571428571427,
+          }
+        }
+      >
+        Overview
+      </Text>
+      <Text
+        style={
+          Object {
+            "color": "black",
+            "height": 550,
+            "left": 31.428571428571427,
+            "marginTop": 15.714285714285714,
+            "width": 502.85714285714283,
+          }
+        }
+      />
+    </View>
+  </View>
+</RCTScrollView>
+`;

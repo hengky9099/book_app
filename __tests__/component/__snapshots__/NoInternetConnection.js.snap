@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NoInternetConnection Component Testing Registration Completed Snapshot Snapshot 1`] = `
+<View
+  testID="NoInternetConnection"
+>
+  <Text
+    style={
+      Object {
+        "fontSize": 37.714285714285715,
+        "marginTop": 392.85714285714283,
+        "textAlign": "center",
+      }
+    }
+  >
+    No Internet Connection, Check your internet
+  </Text>
+  <View
+    accessible={true}
+    collapsable={false}
+    focusable={false}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#4D96FF",
+        "borderRadius": 15.714285714285714,
+        "height": 62.857142857142854,
+        "justifyContent": "center",
+        "marginLeft": 62.857142857142854,
+        "marginTop": 471.42857142857144,
+        "opacity": 1,
+        "width": 408.57142857142856,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "white",
+        }
+      }
+    >
+      Back to Login
+    </Text>
+  </View>
+</View>
+`;

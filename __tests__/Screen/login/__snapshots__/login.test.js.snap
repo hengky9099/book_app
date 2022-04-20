@@ -1,0 +1,143 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login Testing Snapshot Login Snapshot 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#ffffff",
+      "height": 2357.142857142857,
+    }
+  }
+>
+  <Image
+    source={
+      Object {
+        "testUri": "../../../src/assets/images/logo.png",
+      }
+    }
+    style={
+      Object {
+        "height": 314.2857142857143,
+        "left": 110,
+        "top": 204.28571428571428,
+        "width": 314.2857142857143,
+      }
+    }
+  />
+  <TextInput
+    onChangeText={[Function]}
+    placeholder="Email"
+    style={
+      Object {
+        "borderColor": "gray",
+        "borderRadius": 15.714285714285714,
+        "borderStyle": "solid",
+        "borderWidth": 1.5714285714285714,
+        "left": 62.857142857142854,
+        "marginBottom": 31.428571428571427,
+        "top": 235.71428571428572,
+        "width": 440,
+      }
+    }
+    textContentType="emailAddress"
+  />
+  <TextInput
+    onChangeText={[Function]}
+    placeholder="Password"
+    secureTextEntry={true}
+    style={
+      Object {
+        "borderColor": "gray",
+        "borderRadius": 15.714285714285714,
+        "borderStyle": "solid",
+        "borderWidth": 1.5714285714285714,
+        "left": 62.857142857142854,
+        "marginBottom": 31.428571428571427,
+        "top": 235.71428571428572,
+        "width": 440,
+      }
+    }
+  />
+  <View>
+    <View
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#4D96FF",
+          "borderRadius": 15.714285714285714,
+          "height": 62.857142857142854,
+          "justifyContent": "center",
+          "left": 70.71428571428572,
+          "opacity": 1,
+          "top": 235.71428571428572,
+          "width": 408.57142857142856,
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "white",
+          }
+        }
+      >
+        Login
+      </Text>
+    </View>
+  </View>
+  <Text
+    style={
+      Object {
+        "color": "gray",
+        "fontSize": 22,
+        "fontWeight": "bold",
+        "marginLeft": 157.14285714285714,
+        "marginTop": 251.42857142857142,
+      }
+    }
+  >
+    Don't have an account?
+  </Text>
+  <View
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "opacity": 1,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "black",
+          "fontSize": 25.142857142857142,
+          "fontWeight": "bold",
+          "left": 216.85714285714286,
+          "top": 15.714285714285714,
+        }
+      }
+    >
+      Register
+    </Text>
+  </View>
+</View>
+`;

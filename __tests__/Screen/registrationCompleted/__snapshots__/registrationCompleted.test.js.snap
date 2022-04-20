@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Registration Completed Testing should render Snapshot 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#ffffff",
+      "height": 1257.142857142857,
+    }
+  }
+  testID="registrationCompleted"
+>
+  <Text
+    style={
+      Object {
+        "color": "black",
+        "fontSize": 37.714285714285715,
+        "fontWeight": "bold",
+        "left": 62.857142857142854,
+        "top": 157.14285714285714,
+      }
+    }
+  >
+    Registration Completed!
+  </Text>
+  <Image
+    source={
+      Object {
+        "testUri": "../../../src/assets/images/Check.png",
+      }
+    }
+    style={
+      Object {
+        "height": 314.2857142857143,
+        "left": 110,
+        "top": 314.2857142857143,
+        "width": 314.2857142857143,
+      }
+    }
+  />
+  <Text
+    style={
+      Object {
+        "fontSize": 31.428571428571427,
+        "fontWeight": "800",
+        "textAlign": "center",
+        "top": 392.85714285714283,
+      }
+    }
+  >
+    We sent email verification to your email
+  </Text>
+  <View
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#4D96FF",
+        "borderRadius": 15.714285714285714,
+        "height": 62.857142857142854,
+        "justifyContent": "center",
+        "left": 70.71428571428572,
+        "opacity": 1,
+        "top": 550,
+        "width": 408.57142857142856,
+      }
+    }
+    testID="RegistrationCompletedButton"
+  >
+    <Text
+      style={
+        Object {
+          "color": "white",
+        }
+      }
+    >
+      Back to Login
+    </Text>
+  </View>
+</View>
+`;

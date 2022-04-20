@@ -1,0 +1,160 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Register Testing Snapshot Register Snapshot 1`] = `
+<RCTScrollView
+  style={
+    Object {
+      "backgroundColor": "white",
+    }
+  }
+>
+  <View>
+    <Image
+      source={
+        Object {
+          "testUri": "../../../src/assets/images/logo.png",
+        }
+      }
+      style={
+        Object {
+          "height": 314.2857142857143,
+          "marginLeft": 110,
+          "marginTop": 157.14285714285714,
+          "width": 314.2857142857143,
+        }
+      }
+    />
+    <TextInput
+      onChangeText={[Function]}
+      placeholder="Full Name"
+      style={
+        Object {
+          "borderColor": "gray",
+          "borderRadius": 15.714285714285714,
+          "borderStyle": "solid",
+          "borderWidth": 1.5714285714285714,
+          "marginBottom": 31.428571428571427,
+          "marginLeft": 50.285714285714285,
+          "width": 440,
+        }
+      }
+      testID="registration.username"
+      value=""
+    />
+    <TextInput
+      onChangeText={[Function]}
+      placeholder="Email"
+      style={
+        Object {
+          "borderColor": "gray",
+          "borderRadius": 15.714285714285714,
+          "borderStyle": "solid",
+          "borderWidth": 1.5714285714285714,
+          "marginBottom": 31.428571428571427,
+          "marginLeft": 50.285714285714285,
+          "width": 440,
+        }
+      }
+      textContentType="emailAddress"
+      value=""
+    />
+    <TextInput
+      onChangeText={[Function]}
+      placeholder="Password"
+      secureTextEntry={true}
+      style={
+        Object {
+          "borderColor": "gray",
+          "borderRadius": 15.714285714285714,
+          "borderStyle": "solid",
+          "borderWidth": 1.5714285714285714,
+          "marginBottom": 31.428571428571427,
+          "marginLeft": 50.285714285714285,
+          "width": 440,
+        }
+      }
+      value=""
+    />
+    <View
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#4D96FF",
+          "borderRadius": 15.714285714285714,
+          "height": 62.857142857142854,
+          "justifyContent": "center",
+          "marginLeft": 62.857142857142854,
+          "opacity": 1,
+          "width": 408.57142857142856,
+        }
+      }
+      testID="RegisterButton"
+    >
+      <Text
+        style={
+          Object {
+            "color": "white",
+          }
+        }
+      >
+        Register
+      </Text>
+    </View>
+    <Text
+      style={
+        Object {
+          "color": "gray",
+          "fontSize": 22,
+          "fontWeight": "bold",
+          "marginLeft": 157.14285714285714,
+          "marginTop": 15.714285714285714,
+        }
+      }
+    >
+      Already have an account?
+    </Text>
+    <View
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+      testID="LoginButton"
+    >
+      <Text
+        style={
+          Object {
+            "color": "black",
+            "fontSize": 25.142857142857142,
+            "fontWeight": "bold",
+            "left": 226.28571428571428,
+            "marginTop": 15.714285714285714,
+          }
+        }
+      >
+        Login
+      </Text>
+    </View>
+  </View>
+</RCTScrollView>
+`;
