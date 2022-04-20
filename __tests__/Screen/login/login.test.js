@@ -14,8 +14,6 @@ jest.mock('redux-persist', () => {
   };
 });
 
-const mocked = jest.fn();
-
 describe('Login Testing', () => {
   describe('Login State Testing', () => {
     const component = create(ContainerTesting(<Login />));

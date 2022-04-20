@@ -3,7 +3,6 @@ const {
   isValidPassword,
   checkEmail,
   rupiah,
-  Sort,
 } = require('../../src/helpers/validation');
 
 describe('UNIT TEST', () => {
