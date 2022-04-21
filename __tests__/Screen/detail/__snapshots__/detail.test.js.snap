@@ -28,6 +28,7 @@ exports[` Detail Testing Detail Snapshot Snapshot 1`] = `
           "top": 31.428571428571427,
         }
       }
+      testID="backButton"
     >
       <Text
         allowFontScaling={false}

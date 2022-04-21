@@ -77,6 +77,7 @@ const Index = ({navigation}) => {
       return (
         <ScrollView refreshControl={<RefreshControl refreshing={refreshing} />}>
           <TouchableOpacity
+            testID="backButton"
             style={styles.backicon}
             onPress={() => navigation.navigate('Home')}>
             <Icon name="arrow-left-circle" size={30} color="black" />

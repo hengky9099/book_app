@@ -19,3 +19,15 @@ jobs:
 
       - name: unit testing
         run: yarn test -u
+
+  check-linter:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: instalation modules
+        run: yarn
+
+      - name: cleaning code
+        run: yarn lint
